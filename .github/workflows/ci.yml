@@ -8,6 +8,12 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -25,6 +31,8 @@ jobs:
         run: ./mvnw clean package -DskipTests
 
       - name: Run tests
+        env:
+          SPRING_DATA_MONGODB_URI: mongodb://localhost:27017/test
         run: ./mvnw test
 
       - name: Analyze with SonarCloud

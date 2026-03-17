@@ -46,13 +46,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getById(String id) {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isEmpty() || user.get() == null) {
-            throw new NoSuchElementException("User with id " + id + " not found");
-        }
-        return user.get();
-    }
+//    public User getById(String id) {
+//        Optional<User> user = userRepository.findById(id);
+//        if (user.isEmpty() || user.get() == null) {
+//            throw new NoSuchElementException("User with id " + id + " not found");
+//        }
+//        return user.get();
+//    }
 
     public User create(User user) {
         return userRepository.save(user);

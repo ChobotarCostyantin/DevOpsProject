@@ -1,0 +1,10 @@
+replicaCount: 2
+image:
+  repository: devops-project
+  tag: latest
+  pullPolicy: Never
+db:
+  uri: "mongodb://user:pass@mongodb:27017/test?authSource=admin"
+service:
+  type: NodePort
+  port: 8080
